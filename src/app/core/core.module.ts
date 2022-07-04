@@ -5,6 +5,7 @@ import { MaterialModule } from '../material/material.module';
 import { MasterComponent } from './components/master/master.component';
 import { RouterModule } from '@angular/router';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     CommonModule,
     RouterModule,
     MaterialModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent
