@@ -1,0 +1,17 @@
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.drawer-container {
+    height: 100%;
+}
+
+.drawer {
+    width: 250px;
+}
+
+.outlet {
+    padding: 1.5rem 2rem;
+}

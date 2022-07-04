@@ -1,0 +1,17 @@
+{
+    "users": [
+        {
+            "name": "Ankit Patel",
+            "age": 18,
+            "phoneNo": 8347892046,
+            "email": "ankitpatelak2017@gmail.com",
+            "skills": [
+                "Angular",
+                "React",
+                "JavaScript"
+            ],
+            "address": "A 106 Shree Shankar Appt, Chala Vapi",
+            "bloodGroup": "O+"
+        }
+    ]
+}
