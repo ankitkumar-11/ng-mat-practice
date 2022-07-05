@@ -1,1 +1,2 @@
-<app-user-form-presentation></app-user-form-presentation>
+<app-user-form-presentation [editUserData]="editData$ | async" (submit)="onSubmit($event)" (cancel)="onCancel()">
+</app-user-form-presentation>

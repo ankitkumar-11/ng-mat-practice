@@ -18,6 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const MaterialComponet = [
   MatButtonModule,
@@ -38,7 +39,8 @@ const MaterialComponet = [
   MatMenuModule,
   MatListModule,
   MatCardModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSnackBarModule,
 ]
 
 @NgModule({

@@ -1,7 +1,7 @@
 <div class="d-flex flex-row-reverse mb-3">
-    <button mat-raised-button routerLink="../add">ADD</button>
+    <button mat-raised-button (click)="onForm()">ADD</button>
 </div>
-<table mat-table [dataSource]="usersList" class="mat-elevation-z2">
+<table mat-table [dataSource]="usersList" class="w-100 mat-elevation-z2">
 
     <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -48,7 +48,7 @@
             <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
                 <mat-icon>more_vert</mat-icon>
             </button>
-            <button class="ms-3" mat-icon-button color="primary" (click)="onEdit(element.id)">
+            <button class="ms-3" mat-icon-button color="primary" (click)="onForm(element)">
                 <mat-icon>edit</mat-icon>
             </button>
             <button class="ms-3" mat-icon-button color="accent" (click)="onDelete(element)">

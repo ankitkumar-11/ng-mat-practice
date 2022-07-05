@@ -6,13 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: MasterComponent,
-    children:[
+    children: [
       {
-        path:'',
-        pathMatch:'full',
-        redirectTo:'users'
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'users'
       },
-      { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) }
+      { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+      { path: 'users-dialog', loadChildren: () => import('./users-dialog/users-dialog.module').then(m => m.UsersDialogModule) },
     ]
   },
 ];

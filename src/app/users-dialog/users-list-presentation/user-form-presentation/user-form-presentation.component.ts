@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { User } from '../../model/user.modal';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { User } from 'src/app/users/model/user.modal';
 import { UserFormPresenterService } from '../user-form-presenter/user-form-presenter.service';
 
 @Component({
@@ -13,34 +13,21 @@ import { UserFormPresenterService } from '../user-form-presenter/user-form-prese
 export class UserFormPresentationComponent implements OnInit {
 
 
-  private _editUserData!: User;
-  public get editUserData(): User | any {
-    return this._editUserData;
+  public userForm: FormGroup;
+  public formSubmitted: boolean
+
+  constructor(@Inject(MAT_DIALOG_DATA) public _editUserData: User, private _presenter: UserFormPresenterService, private _dialogRef: MatDialogRef<UserFormPresentationComponent>) {
+    this.userForm = this._presenter.userForm();
+    this.formSubmitted = false;
   }
-  @Input() public set editUserData(v: User | null) {
-    if (v) {
-      this._editUserData = v;
+
+  ngOnInit(): void {
+    if (this._editUserData) {
       this.userForm.patchValue(this._editUserData)
       this._editUserData.skills.forEach(skill => {
         this.skills.push(this._presenter.skillField(skill))
       })
     }
-  }
-
-  @Output() submit: EventEmitter<User>;
-  @Output() cancel: EventEmitter<Event>;
-
-  public userForm: FormGroup;
-  public formSubmitted: boolean
-
-  constructor(private _presenter: UserFormPresenterService) {
-    this.userForm = this._presenter.userForm();
-    this.submit = new EventEmitter<User>();
-    this.cancel = new EventEmitter<Event>();
-    this.formSubmitted = false;
-  }
-
-  ngOnInit(): void {
   }
 
   /**
@@ -81,16 +68,16 @@ export class UserFormPresentationComponent implements OnInit {
    * @description emit form value on submit click in form is valid
    */
   public onSubmit(): void {
-    this.userForm.valid ? this.submit.emit(this.userForm.value) : this.userForm.markAllAsTouched();
+    this.userForm.valid ? this._dialogRef.close(this.userForm.value) : this.userForm.markAllAsTouched();
   }
 
 
   /**
    * @name onCancel
-   * @description redirect to list on cancel
+   * @description close the form dialog box
    */
   public onCancel(): void {
-    this.cancel.emit()
+    this._dialogRef.close();
   }
 
 
@@ -102,5 +89,4 @@ export class UserFormPresentationComponent implements OnInit {
     this.userForm.reset();
     this.userForm.get('gender')?.setValue('0');
   }
-
 }

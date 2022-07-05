@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../../model/user.modal';
 
 @Component({
   selector: 'app-user-list-presenation',
@@ -7,21 +8,37 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class UserListPresenationComponent implements OnInit {
 
-
-  private _usersList: any;
-  public get usersList(): any {
+  /**
+   * @description Setter for userList from Input
+   */
+  @Input() public set usersList(usersList: User[] | null) {
+    if (usersList)
+      this._usersList = usersList;
+  }
+  public get usersList(): User[] {
     return this._usersList;
   }
-  @Input() public set usersList(v: any) {
-    if (v)
-      this._usersList = v;
+
+  @Output() editId: EventEmitter<string>;
+  @Output() deleteId: EventEmitter<User>;
+
+  private _usersList!: User[];
+
+  protected displayedColumns: string[] = ['position', 'fullname', 'email', 'phoneNo', 'dateOfBirth', 'gender', 'action'];
+
+  constructor() {
+    this.editId = new EventEmitter<string>();
+    this.deleteId = new EventEmitter<User>();
   }
-
-  protected displayedColumns: string[] = ['position', 'name', 'email', 'phoneNumber', 'age', 'action'];
-
-  constructor() { }
 
   ngOnInit(): void {
   }
 
+  public onEdit(id: string): void {
+    this.editId.emit(id);
+  }
+
+  public onDelete(user: User): void {
+    this.deleteId.emit(user)
+  }
 }

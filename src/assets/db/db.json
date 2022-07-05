@@ -1,17 +1,20 @@
 {
-    "users": [
-        {
-            "name": "Ankit Patel",
-            "age": 18,
-            "phoneNo": 8347892046,
-            "email": "ankitpatelak2017@gmail.com",
-            "skills": [
-                "Angular",
-                "React",
-                "JavaScript"
-            ],
-            "address": "A 106 Shree Shankar Appt, Chala Vapi",
-            "bloodGroup": "O+"
-        }
-    ]
+  "users": [
+    {
+      "firstName": "Ankit",
+      "middleName": "pravin",
+      "lastName": "patel",
+      "email": "ankit@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2000-10-01T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "o+",
+      "address": "A 106 Shree Shankar Appt.",
+      "skills": [
+        "Angular",
+        "JavaScript"
+      ],
+      "id": 1
+    }
+  ]
 }

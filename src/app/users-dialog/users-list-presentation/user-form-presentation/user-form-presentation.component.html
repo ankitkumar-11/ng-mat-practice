@@ -1,0 +1,132 @@
+<h2 mat-dialog-title>User Form</h2>
+<mat-dialog-content>
+    <form [formGroup]="userForm" class="mt-3">
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="First Name" formControlName="firstName">
+                    <mat-error *ngIf="getControls['firstName']?.errors?.['required']">
+                        First Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Middle Name</mat-label>
+                    <input matInput placeholder="Middle Name" formControlName="middleName">
+                    <mat-error *ngIf="getControls['middleName']?.errors?.['required']">
+                        Middle Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Last Name" formControlName="lastName">
+                    <mat-error *ngIf="getControls['lastName']?.errors?.['required']">
+                        Last Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter your email here" formControlName="email">
+                    <mat-error *ngIf="getControls['email']?.errors?.['required']">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="getControls['email']?.errors?.['email']">
+                        Invalid Email
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput placeholder="Enter your phone number here" formControlName="phoneNo">
+                    <mat-error *ngIf="getControls['phoneNo']?.errors?.['required']">
+                        Phone Number is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Date Of Birth</mat-label>
+                    <input type="string" matInput [matDatepicker]="picker" placeholder="Choose your date of birth"
+                        formControlName="dateOfBirth">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="getControls['dateOfBirth']?.errors?.['required']">
+                        Date Of Birth is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <div class="d-flex flex-column">
+                    <mat-label>Gender</mat-label>
+                    <mat-radio-group color="primary" class="mt-2" formControlName="gender">
+                        <mat-radio-button value="0" class="me-3">Male</mat-radio-button>
+                        <mat-radio-button value="1">Female</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Blood Group</mat-label>
+                    <input matInput placeholder="Enter your blood group" formControlName="bloodGroup">
+                    <mat-error *ngIf="getControls['bloodGroup']?.errors?.['pattern']">
+                        Invalid Blood Group
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="w-100 mat-address-field mat-resize-none" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput placeholder="Enter your Address here" formControlName="address"></textarea>
+                    <mat-error *ngIf="getControls['address']?.errors?.['required']">
+                        Address is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="d-flex flex-column">
+                    <div class="d-flex align-items-center mb-2">
+                        <mat-label>Skills</mat-label>
+                        <button type="button" class="ms-3" mat-mini-fab color="primary" (click)="addSkillField()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-center mt-2" formArrayName="skills"
+                        *ngFor="let skill of skills.controls,let i = index">
+                        <mat-form-field appearance="outline" class="skills-control mb-2">
+                            <input matInput placeholder="Enter your phone number here" [formControlName]="i">
+                            <mat-error *ngIf="skills.controls[i]?.errors?.['required']">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                        <button class="ms-3 skill-remove-btn" mat-mini-fab color="warn" (click)="removeSkillField(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                    <mat-error *ngIf="skills.errors?.['minlength'] || skills.length ===0">
+                        ADD MIN 2 Skills
+                    </mat-error>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+    <button mat-raised-button class="ms-3" (click)="onCancel()" color="warn">Cancel</button>
+    <button mat-raised-button class="ms-3" (click)="onReset()" color="accent">Reset</button>
+</mat-dialog-actions>

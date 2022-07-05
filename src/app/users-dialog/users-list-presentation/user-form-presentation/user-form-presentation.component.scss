@@ -1,0 +1,61 @@
+.mat-form-control {
+    width: 100%;
+}
+
+.skills-control {
+    padding-bottom: 0px;
+
+    ::ng-deep.mat-form-field-wrapper {
+        margin: 0;
+        padding: 0;
+    }
+
+    &.ng-untouched.ng-invalid {
+        ::ng-deep.mat-form-field-wrapper {
+            margin: 0;
+            padding-bottom: 0em;
+        }
+
+        ~ .skill-remove-btn{
+            margin-bottom: .725rem;
+        }
+    }
+
+    &.ng-touched {
+        ::ng-deep.mat-form-field-wrapper {
+            margin: 0;
+            padding-bottom: 1.3em;
+        }
+
+        ~ .skill-remove-btn{
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &.ng-touched.ng-valid {
+        ::ng-deep.mat-form-field-wrapper {
+            margin: 0;
+            padding-bottom: 0;
+        }
+
+        ~ .skill-remove-btn{
+            margin-bottom: .725rem;
+        }
+    }
+
+    ::ng-deep.mat-form-field-infix {
+        padding-top: 1.5em;
+        border-top: 0px;
+    }
+}
+
+.mat-form-field-infix {
+    border-top: 0px;
+}
+
+.mat-address-field {
+    textarea {
+        height: 60px;
+        resize: none;
+    }
+}

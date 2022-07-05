@@ -1,0 +1,3 @@
+<app-users-list-presentation [usersList]="usersList$ | async" (newUserData)="addUser($event)"
+    (editUserData)="updateUser($event)" (deleteId)="onDelete($event)">
+</app-users-list-presentation>

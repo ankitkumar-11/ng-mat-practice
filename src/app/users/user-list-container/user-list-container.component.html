@@ -1,1 +1,2 @@
-<app-user-list-presenation [usersList]="usersList$ | async"></app-user-list-presenation>
+<app-user-list-presenation [usersList]="usersList$ | async" (editId)="onEdit($event)" (deleteId)="onDelete($event)">
+</app-user-list-presenation>

@@ -21,7 +21,6 @@ import { UserService } from './user.service';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    MaterialModule,
     SharedModule
   ],
   providers:[
