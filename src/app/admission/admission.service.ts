@@ -9,7 +9,7 @@ export class AdmissionService {
 
   public getPostalAddress(pinCode: number): Observable<any> {
     return this._http.get<any>(`https://api.postalpincode.in/pincode/${pinCode}`).pipe(
-      map(res => res[0].PostOffice),
+      map(res => res[0].PostOffice?res[0].PostOffice:alert('Enter a valid pin code')),
     )
     // return this._http.get<any>(`https://api.postalpincode.in/pincode/396191`)
   }

@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AdmissionService } from '../admission.service';
 
+interface Post {
+  citys: string[],
+  country: string,
+  state: string;
+}
 @Component({
   selector: 'app-admission-form-container',
   templateUrl: './admission-form-container.component.html',
@@ -9,34 +14,27 @@ import { AdmissionService } from '../admission.service';
 })
 export class AdmissionFormContainerComponent implements OnInit {
 
-  public arrayofCity: any = [];
-  public country: any;
-  public state: any;
+  public citys: string[]
 
-  public arrayOfCity$: Subject<any>;
-  public state$: Subject<any>;
-  public country$: Subject<any>;
+  public obj: Subject<Post>
+
   constructor(private _service: AdmissionService) {
-    this.arrayOfCity$ = new Subject<any>()
-    this.state$ = new Subject<any>()
-    this.country$ = new Subject<any>()
+    this.citys = [];
+    this.obj = new Subject<Post>();
   }
 
   ngOnInit(): void {
-   
+    this.obj.subscribe(res => console.log(res))
   }
 
-  public onPinCode(pincode:number){
+  public onPinCode(pincode: number) {
     console.log('onInit')
     this._service.getPostalAddress(pincode).subscribe((res: any) => {
+      this.citys = [];
       res.forEach((el: any) => {
-        this.arrayofCity.push(el.Name)
-        this.country = el.Country;
-        this.state = el.State;
+        this.citys.push(el.Name)
       })
-      this.arrayOfCity$.next(this.arrayofCity);
-      this.country$.next(this.country);
-      this.state$.next(this.state)
+      this.obj.next({ citys: this.citys, country: res[0].Country, state: res[0].State })
     })
   }
 

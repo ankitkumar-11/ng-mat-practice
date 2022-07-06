@@ -2,6 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AdmissionFormPresenterService } from '../admission-form-presenter/admission-form-presenter.service';
 
+interface Post{
+  citys:string[],
+  country:string,
+  state:string;
+}
 @Component({
   selector: 'app-admission-form-presentation',
   templateUrl: './admission-form-presentation.component.html',
@@ -10,35 +15,13 @@ import { AdmissionFormPresenterService } from '../admission-form-presenter/admis
 })
 export class AdmissionFormPresentationComponent implements OnInit {
 
-
-
-  private _state : string ='';
-  public get state(): string {
-    return this._state;
+  private _postalDetails!: Post;
+  public get postalDetails(): Post {
+    return this._postalDetails;
   }
-  @Input() public set state(v: string | null) {
-    if (v)
-      this._state = v;
-  }
-
-
-  private _country : string = '';
-  public get country(): string {
-    return this._country;
-  }
-  @Input() public set country(v: string | null) {
-    if (v)
-      this._country = v;
-  }
-
-
-  private _citys: any;
-  public get citys(): any {
-    return this._citys;
-  }
-  @Input() public set citys(v: any) {
+  @Input() public set postalDetails(v: Post | null) {
     if (v) {
-      this._citys = v;
+      this._postalDetails = v;
     }
   }
 

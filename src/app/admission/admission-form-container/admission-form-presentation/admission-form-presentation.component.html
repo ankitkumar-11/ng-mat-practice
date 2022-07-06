@@ -116,20 +116,20 @@
                     <div class="col-3">
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-label>Country</mat-label>
-                            <input matInput disabled [value]="country">
+                            <input matInput disabled [value]="postalDetails?.country">
                         </mat-form-field>
                     </div>
                     <div class="col-3">
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-label>State</mat-label>
-                            <input matInput disabled [value]="state">
+                            <input matInput disabled [value]="postalDetails?.state">
                         </mat-form-field>
                     </div>
                     <div class="col-3">
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-label>City</mat-label>
                             <mat-select>
-                                <mat-option *ngFor="let city of citys" [value]="city">
+                                <mat-option *ngFor="let city of postalDetails?.citys" [value]="city">
                                     {{city}}
                                 </mat-option>
                             </mat-select>
