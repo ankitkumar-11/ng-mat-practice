@@ -1,0 +1,16 @@
+.mat-address-field {
+    textarea {
+        height: 60px;
+        resize: none;
+    }
+}
+
+.subject-control{
+    ::ng-deep.mat-form-field-wrapper{
+        padding-bottom: 0;
+    }
+
+    ::ng-deep.mat-form-field-infix{
+        border-top: 0.4em solid transparent;
+    }
+}

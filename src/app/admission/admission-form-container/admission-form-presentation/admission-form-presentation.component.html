@@ -1,0 +1,179 @@
+<div class="card px-3 py-4 mat-elevation-z0">
+    <div class="card-body">
+        <div class="mb-3">
+            <mat-card-title>Admission Form</mat-card-title>
+        </div>
+        <mat-card-content>
+            <form [formGroup]="admissionForm">
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Full Name</mat-label>
+                            <input type="text" matInput placeholder="Enter your full name here"
+                                formControlName="fullName">
+                            <mat-error *ngIf="getControls['fullName']?.errors?.['required']">
+                                Full Name is required.
+                            </mat-error>
+                            <mat-error *ngIf="getControls['fullName']?.errors?.['pattern']">
+                                Only alphabets are allowed.
+                            </mat-error>
+                            <mat-error
+                                *ngIf="getControls['fullName']?.errors?.['maxlength'] && !getControls['fullName']?.errors?.['pattern']">
+                                Max length should be less than 40.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Enter you email address here" formControlName="email">
+                            <mat-error *ngIf="getControls['email']?.errors?.['required']">
+                                Email is required.
+                            </mat-error>
+                            <mat-error *ngIf="getControls['email']?.errors?.['pattern']">
+                                Invaild Email.
+                            </mat-error>
+                            <mat-error
+                                *ngIf="getControls['email']?.errors?.['maxlength'] && !getControls['email']?.errors?.['pattern']">
+                                Max length should be less than 40.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput placeholder="Enter you phone number here" formControlName="phoneNo">
+                            <mat-error *ngIf="getControls['phoneNo']?.errors?.['required']">
+                                Phone Number is required.
+                            </mat-error>
+                            <mat-error *ngIf="getControls['phoneNo']?.errors?.['pattern']">
+                                Invaild Phone Number.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Date Of Birth</mat-label>
+                            <input type="string" matInput [matDatepicker]="picker"
+                                placeholder="Choose your date of birth" formControlName="dateOfBirth">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="getControls['dateOfBirth']?.errors?.['required']">
+                                Date Of Birth is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex flex-column">
+                            <mat-label>Gender</mat-label>
+                            <mat-radio-group color="primary" class="mt-2" formControlName="gender">
+                                <mat-radio-button value="0" class="me-3">Male</mat-radio-button>
+                                <mat-radio-button value="1">Female</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Blood Group</mat-label>
+                            <input matInput placeholder="Enter your blood group" formControlName="bloodGroup">
+                            <mat-error *ngIf="getControls['bloodGroup']?.errors?.['required']">
+                                Blood Group is required.
+                            </mat-error>
+                            <mat-error *ngIf="getControls['bloodGroup']?.errors?.['pattern']">
+                                Invalid Blood Group.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Branch</mat-label>
+                            <input matInput placeholder="Enter your branch here" formControlName="branch">
+                            <mat-error *ngIf="getControls['branch']?.errors?.['required']">
+                                Branch is required.
+                            </mat-error>
+                            <mat-error *ngIf="getControls['branch']?.errors?.['maxlength']">
+                                Max length should be 10.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Pincode</mat-label>
+                            <input matInput placeholder="Enter your pin code here" formControlName="pinCode"
+                                (change)="onPinCodeChange()">
+                            <mat-error *ngIf="getControls['pinCode']?.errors?.['required']">
+                                Pin code is required.
+                            </mat-error>
+                            <mat-error *ngIf="getControls['pinCode']?.errors?.['pattern']">
+                                Invalid pincode.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Country</mat-label>
+                            <input matInput disabled [value]="country">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>State</mat-label>
+                            <input matInput disabled [value]="state">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>City</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let city of citys" [value]="city">
+                                    {{city}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="w-100 mat-address-field mat-resize-none" appearance="outline">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput placeholder="Enter your Address here"></textarea>
+                            <!-- <mat-error *ngIf="getControls['address']?.errors?.['required']">
+                                Address is <strong>required</strong>
+                            </mat-error> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex align-items-center mb-2">
+                                <mat-label>Add Subjects</mat-label>
+                            </div>
+                            <div class="d-flex align-items-center mt-2 mb-2">
+                                <mat-form-field appearance="outline" class="subject-control">
+                                    <input matInput placeholder="Enter Subject here">
+                                </mat-form-field>
+                                <button class="ms-3 skill-remove-btn" mat-mini-fab color="warn">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button type="button" class="ms-3" mat-mini-fab color="primary">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                            </ div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    </div>
+            </form>
+        </mat-card-content>
+        <mat-card-footer class="d-flex align-items-end mt-3">
+            <button mat-raised-button color="primary">Done</button>
+            <button mat-raised-button color="warn" class="ms-3">Reset</button>
+        </mat-card-footer>
+    </div>
+</div>

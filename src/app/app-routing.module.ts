@@ -14,6 +14,7 @@ const routes: Routes = [
       },
       { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
       { path: 'users-dialog', loadChildren: () => import('./users-dialog/users-dialog.module').then(m => m.UsersDialogModule) },
+      { path: 'admission', loadChildren: () => import('./admission/admission.module').then(m => m.AdmissionModule) },
     ]
   },
 ];
