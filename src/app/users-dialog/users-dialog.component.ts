@@ -29,6 +29,7 @@ export class UsersDialogComponent implements OnInit {
     this._service.addUser(userData).subscribe({
       next: () => {
         this._utitlity.showSnackBar("New User Added");
+        this.getUsers();
       },
       error: (e) => {
         console.error(e)
@@ -36,15 +37,16 @@ export class UsersDialogComponent implements OnInit {
     })
   }
 
-  public updateUser(data:any) {
-    // this._service.updateUser(userData, userData.id).subscribe({
-    //   next: () => {
-    //     this._utitlity.showSnackBar("User Details Updated");
-    //   },
-    //   error: (e) => {
-    //     console.error(e)
-    //   }
-    // })
+  public updateUser({ data, id }: { data: User, id: string }) {
+    this._service.updateUser(data, id).subscribe({
+      next: () => {
+        this._utitlity.showSnackBar("User Details Updated");
+        this.getUsers();
+      },
+      error: (e) => {
+        console.error(e)
+      }
+    })
   }
 
 

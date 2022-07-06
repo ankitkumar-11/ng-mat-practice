@@ -19,6 +19,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const MaterialComponet = [
   MatButtonModule,
@@ -41,6 +43,8 @@ const MaterialComponet = [
   MatCardModule,
   MatNativeDateModule,
   MatSnackBarModule,
+  MatPaginatorModule,
+  MatSortModule
 ]
 
 @NgModule({

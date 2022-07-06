@@ -15,6 +15,118 @@
         "JavaScript"
       ],
       "id": 1
+    },
+    {
+      "firstName": "Hiral",
+      "middleName": "pravin",
+      "lastName": "patel",
+      "email": "hiral@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2008-08-01T18:30:00.000Z",
+      "gender": "1",
+      "bloodGroup": "o+",
+      "address": "A 106 Shree Shankar Appt.",
+      "skills": [
+        "Arts",
+        "VB"
+      ],
+      "id": 2
+    },
+    {
+      "firstName": "Akshay",
+      "middleName": "rakesh",
+      "lastName": "patel",
+      "email": "akshay@gmail.com",
+      "phoneNo": "9876543210",
+      "dateOfBirth": "2003-05-05T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "A+",
+      "address": "Ambheti",
+      "skills": [
+        "Mechanic",
+        "Dances"
+      ],
+      "id": 3
+    },
+    {
+      "firstName": "Jay",
+      "middleName": "manoj",
+      "lastName": "patel",
+      "email": "jay@gmail.com",
+      "phoneNo": "9786541230",
+      "dateOfBirth": "2001-01-26T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "o+",
+      "address": "A 106 Shree Shankar Appt.",
+      "skills": [
+        "Angular",
+        "JavaScript"
+      ],
+      "id": 4
+    },
+    {
+      "firstName": "Ankit",
+      "middleName": "pravin",
+      "lastName": "patel",
+      "email": "ankit@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2000-10-01T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "o+",
+      "address": "A 106 Shree Shankar Appt.",
+      "skills": [
+        "Angular",
+        "JavaScript"
+      ],
+      "id": 5
+    },
+    {
+      "firstName": "Ankit",
+      "middleName": "pravin",
+      "lastName": "patel",
+      "email": "ankit@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2000-10-01T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "o+",
+      "address": "A 106 Shree Shankar Appt.",
+      "skills": [
+        "Angular",
+        "JavaScript"
+      ],
+      "id": 6
+    },
+    {
+      "firstName": "Ankit",
+      "middleName": "pravin",
+      "lastName": "patel",
+      "email": "ankit@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2000-10-01T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "o+",
+      "address": "A 106 Shree Shankar Appt.",
+      "skills": [
+        "Angular",
+        "JavaScript"
+      ],
+      "id": 7
+    },
+    {
+      "firstName": "dfdf",
+      "middleName": "dsdsd",
+      "lastName": "dsds",
+      "email": "ankit@gmail.com",
+      "phoneNo": "89456111233",
+      "dateOfBirth": "2022-07-06T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": null,
+      "address": "dfdfdfd",
+      "skills": [
+        "fdfd",
+        "dfdfd"
+      ],
+      "id": 8
     }
   ]
 }
