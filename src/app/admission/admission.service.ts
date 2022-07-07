@@ -1,17 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, map, mergeMap, Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/internal/operators/map';
+import { environment } from 'src/environments/environment';
+import { AdmissionDetail } from './model/admission-details.model';
 
 @Injectable()
 export class AdmissionService {
 
-  constructor(private _http: HttpClient) { }
+  private apiBaseLink: string;
+  constructor(private _http: HttpClient) {
+    this.apiBaseLink = environment.baseURL;
+  }
 
   public getPostalAddress(pinCode: number): Observable<any> {
     return this._http.get<any>(`https://api.postalpincode.in/pincode/${pinCode}`).pipe(
-      map(res => res[0].PostOffice?res[0].PostOffice:alert('Enter a valid pin code')),
+      map(res => res[0].PostOffice),
     )
-    // return this._http.get<any>(`https://api.postalpincode.in/pincode/396191`)
+  }
+
+  public addNewAdmission(data: AdmissionDetail): Observable<AdmissionDetail> {
+    return this._http.post<AdmissionDetail>(`${this.apiBaseLink}admission`, data)
   }
 
 }

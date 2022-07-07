@@ -1,2 +1,3 @@
-<app-admission-form-presentation [postalDetails]="obj | async" (pinCode)="onPinCode($event)">
+<app-admission-form-presentation [postalDetails]="postalDetail$ | async" (pinCode)="onPinCode($event)"
+    (onSubmit)="onSubmit($event)">
 </app-admission-form-presentation>

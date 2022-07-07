@@ -128,5 +128,65 @@
       ],
       "id": 8
     }
+  ],
+  "admission": [
+    {
+      "fullName": "Ankit Patel",
+      "email": "ankitkumar@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2022-07-04T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "O+",
+      "branch": "CSE",
+      "pinCode": "396191",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Balitha",
+      "address": "A 106 Shree Shankar Appt.",
+      "subjects": [
+        "Maths",
+        "SS"
+      ],
+      "id": 1
+    },
+    {
+      "fullName": "Ankit Kumar Patel",
+      "email": "ankitkumar@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2022-07-03T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "O+",
+      "branch": "CSE",
+      "pinCode": "396191",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Vapi",
+      "address": "A 106 Shree Shankar Appt.",
+      "subjects": [
+        "Maths",
+        "SS",
+        "GK"
+      ],
+      "id": 2
+    },
+    {
+      "fullName": "Ankit Patel",
+      "email": "ankitkumar@gmail.com",
+      "phoneNo": "8347892046",
+      "dateOfBirth": "2022-07-04T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "O+",
+      "branch": "CSE",
+      "pinCode": "396191",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Chhiri",
+      "address": "A 106 Shree Shankar Appt.",
+      "subjects": [
+        "Maths",
+        "SS"
+      ],
+      "id": 3
+    }
   ]
 }

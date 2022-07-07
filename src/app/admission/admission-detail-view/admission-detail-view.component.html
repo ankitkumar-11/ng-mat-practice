@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Admission Details</h2>
+<mat-dialog-content>
+    <p>Full Name :- {{data.fullName}}</p>
+    <p>Email :- {{data.email}}</p>
+    <p>Phone No. :- {{data.phoneNo}}</p>
+    <p>Date of Birth :- {{data.dateOfBirth | date}}</p>
+    <p>Gender :- {{GENDER[data.gender]}}</p>
+    <p>Blood Group :- {{data.bloodGroup}}</p>
+    <p>Address :- {{data.address}}</p>
+    <p>Pincode :- {{data.pinCode}}</p>
+    <p>City :- {{data.city}}</p>
+    <p>State :- {{data.state}}</p>
+    <p>Country :- {{data.country}}</p>
+    <p>Branch :- {{data.branch}}</p>
+    <p>Subjects :- {{data.subjects.join(', ')}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Submit</button>
+    <button mat-raised-button class="ms-3" color="warn" [mat-dialog-close]="false">Cancel</button>
+</mat-dialog-actions>

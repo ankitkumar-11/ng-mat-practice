@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { Subject } from 'rxjs/internal/Subject';
+import { UtilitiesService } from 'src/app/shared/services/utilities.service';
 import { AdmissionService } from '../admission.service';
-
-interface Post {
-  citys: string[],
-  country: string,
-  state: string;
-}
+import { AdmissionDetail } from '../model/admission-details.model';
+import { PostalDetail } from '../model/postal-details.model';
 @Component({
   selector: 'app-admission-form-container',
   templateUrl: './admission-form-container.component.html',
@@ -14,27 +12,48 @@ interface Post {
 })
 export class AdmissionFormContainerComponent implements OnInit {
 
-  public citys: string[]
+  private citys: string[]
+  private _postalDetail: Subject<PostalDetail>
+  public postalDetail$: Observable<PostalDetail>;
 
-  public obj: Subject<Post>
-
-  constructor(private _service: AdmissionService) {
+  constructor(private _service: AdmissionService, private _utilities: UtilitiesService) {
     this.citys = [];
-    this.obj = new Subject<Post>();
+    this._postalDetail = new Subject<PostalDetail>();
+    this.postalDetail$ = this._postalDetail.asObservable();
   }
 
   ngOnInit(): void {
-    this.obj.subscribe(res => console.log(res))
+
   }
 
+  /**
+   * @name onPinCode
+   * @description get state, country and array of city and emit to postal details subject
+   * @param pincode 
+   */
   public onPinCode(pincode: number) {
-    console.log('onInit')
     this._service.getPostalAddress(pincode).subscribe((res: any) => {
-      this.citys = [];
-      res.forEach((el: any) => {
-        this.citys.push(el.Name)
-      })
-      this.obj.next({ citys: this.citys, country: res[0].Country, state: res[0].State })
+      if (res == null) {
+        this._utilities.showSnackBar("Invalid Pin Code.")
+      }
+      else {
+        this.citys = [];
+        res.forEach((el: any) => {
+          this.citys.push(el.Name)
+        })
+        this._postalDetail.next({ citys: this.citys, country: res[0].Country, state: res[0].State })
+      }
+    })
+  }
+
+  /**
+   * @name onSubmit
+   * @description add new Admission data
+   * @param data:AdmissionDetail
+   */
+  public onSubmit(data: AdmissionDetail) {
+    this._service.addNewAdmission(data).subscribe(() => {
+      this._utilities.showSnackBar("Admission is done Successfully.")
     })
   }
 

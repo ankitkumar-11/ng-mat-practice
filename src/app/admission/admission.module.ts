@@ -6,12 +6,16 @@ import { AdmissionFormContainerComponent } from './admission-form-container/admi
 import { AdmissionFormPresentationComponent } from './admission-form-container/admission-form-presentation/admission-form-presentation.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdmissionService } from './admission.service';
+import { AdmissionsListContainerComponent } from './admissions-list-container/admissions-list-container.component';
+import { AdmissionDetailViewComponent } from './admission-detail-view/admission-detail-view.component';
 
 
 @NgModule({
   declarations: [
     AdmissionFormContainerComponent,
-    AdmissionFormPresentationComponent
+    AdmissionFormPresentationComponent,
+    AdmissionsListContainerComponent,
+    AdmissionDetailViewComponent
   ],
   imports: [
     CommonModule,
