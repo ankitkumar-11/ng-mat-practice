@@ -79,8 +79,8 @@
                     <div class="col-3">
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-label>Blood Group</mat-label>
-                            <input matInput placeholder="Enter your blood group" formControlName="bloodGroup"
-                                maxlength="2">
+                            <input appToUpperCase matInput placeholder="Enter your blood group"
+                                formControlName="bloodGroup" maxlength="2">
                             <mat-error *ngIf="getControls['bloodGroup']?.errors?.['required']">
                                 Blood Group is required.
                             </mat-error>
@@ -166,9 +166,8 @@
                                         This field is required.
                                     </mat-error>
                                 </mat-form-field>
-                                <button *ngIf="i!=0" type="button"
-                                    class="ms-3 skill-remove-btn" mat-mini-fab color="warn"
-                                    (click)="removeSubjectField(i)">
+                                <button *ngIf="i!=0" type="button" class="ms-3 skill-remove-btn" mat-mini-fab
+                                    color="warn" (click)="removeSubjectField(i)">
                                     <mat-icon>delete</mat-icon>
                                 </button>
                                 <button *ngIf="i===subjects.controls.length-1 && i!==4" type="button" class="ms-3"

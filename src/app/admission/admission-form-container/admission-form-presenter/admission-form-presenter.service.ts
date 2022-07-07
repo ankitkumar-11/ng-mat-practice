@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+//------------------------------------------------------------------------------------
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, Subject } from 'rxjs';
+//------------------------------------------------------------------------------------
+import { Observable } from 'rxjs/internal/Observable';
+import { Subject } from 'rxjs/internal/Subject';
+//------------------------------------------------------------------------------------
+import { BLOOD_GROUP_REGEX, EMAIL_REGEX, ONLY_ALPHABETS_REGEX, PHONE_NO_REGEX, PINCODE_REGEX } from 'src/app/shared/constants/constants';
+//------------------------------------------------------------------------------------
 import { AdmissionDetailViewComponent } from '../../admission-detail-view/admission-detail-view.component';
+//------------------------------------------------------------------------------------
 import { AdmissionDetail } from '../../model/admission-details.model';
 
 @Injectable()
@@ -23,14 +30,14 @@ export class AdmissionFormPresenterService {
    */
   public admissionForm(): FormGroup {
     return this._fb.group({
-      fullName: [null, [Validators.required, Validators.maxLength(40), Validators.pattern(/^[a-zA-Z ]*$/)]],
-      email: [null, [Validators.required, Validators.maxLength(40), Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
-      phoneNo: [null, [Validators.required, Validators.pattern(/^([0-9]){10}$/)]],
+      fullName: [null, [Validators.required, Validators.maxLength(40), Validators.pattern(ONLY_ALPHABETS_REGEX)]],
+      email: [null, [Validators.required, Validators.maxLength(40), Validators.pattern(EMAIL_REGEX)]],
+      phoneNo: [null, [Validators.required, Validators.pattern(PHONE_NO_REGEX)]],
       dateOfBirth: [null, [Validators.required]],
-      gender: [0, [Validators.required]],
-      bloodGroup: [null, [Validators.required, Validators.pattern(/^(A|B|AB|O)[+|-]$/i)]],
+      gender: ['0', [Validators.required]],
+      bloodGroup: [null, [Validators.required, Validators.pattern(BLOOD_GROUP_REGEX)]],
       branch: [null, [Validators.required, Validators.maxLength(10)]],
-      pinCode: [null, [Validators.required, Validators.pattern(/^([0-9]){6}$/)]],
+      pinCode: [null, [Validators.required, Validators.pattern(PINCODE_REGEX)]],
       country: [null, [Validators.required]],
       state: [null, [Validators.required]],
       city: [null, [Validators.required]],

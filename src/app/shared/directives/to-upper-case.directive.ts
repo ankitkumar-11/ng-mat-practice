@@ -5,7 +5,6 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class ToUpperCaseDirective {
 
-
   constructor(private _el: ElementRef) { }
 
   @HostListener('input', ['$event.target']) onInputChange(input: HTMLInputElement) {

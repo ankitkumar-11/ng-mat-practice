@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+//---------------------------------------------------------------------------------------
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
+//---------------------------------------------------------------------------------------
 import { UtilitiesService } from 'src/app/shared/services/utilities.service';
 import { AdmissionService } from '../admission.service';
+//---------------------------------------------------------------------------------------
 import { AdmissionDetail } from '../model/admission-details.model';
 import { PostalDetail } from '../model/postal-details.model';
 @Component({
@@ -22,9 +25,7 @@ export class AdmissionFormContainerComponent implements OnInit {
     this.postalDetail$ = this._postalDetail.asObservable();
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   /**
    * @name onPinCode
