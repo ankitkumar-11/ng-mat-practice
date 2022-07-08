@@ -144,6 +144,8 @@
       "city": "Balitha",
       "address": "A 106 Shree Shankar Appt.",
       "subjects": [
+        "English",
+        "Maths",
         "Maths",
         "SS"
       ],
@@ -164,10 +166,78 @@
       "address": "A 106 Shree Shankar Appt.",
       "subjects": [
         "Maths",
+        "English",
+        "Maths",
         "SS",
         "GK"
       ],
       "id": 2
+    },
+    {
+      "fullName": "ANKIT KUMAR",
+      "email": "ankit@gmail.com",
+      "phoneNo": "8945611123",
+      "dateOfBirth": "2022-06-30T18:30:00.000Z",
+      "gender": "1",
+      "bloodGroup": "O+",
+      "branch": "CSE",
+      "pinCode": "396191",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Vapi",
+      "address": "A 106 Shree Shankar Appt,",
+      "subjects": [
+        "Angular",
+        "Javascript",
+        "CSS",
+        "Bootstrap",
+        "HTML"
+      ],
+      "id": 4
+    },
+    {
+      "fullName": "ANKIT KUMAR",
+      "email": "ankit@gmail.com",
+      "phoneNo": "8945611123",
+      "dateOfBirth": "2022-06-30T18:30:00.000Z",
+      "gender": "0",
+      "bloodGroup": "O+",
+      "branch": "CSE",
+      "pinCode": "396191",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Vapi",
+      "address": "A 106 Shree Shankar Appt,",
+      "subjects": [
+        "Angular",
+        "Javascript",
+        "CSS",
+        "Bootstrap",
+        "HTML"
+      ],
+      "id": 5
+    },
+    {
+      "fullName": "HIRAL PRAVIN PATEL",
+      "email": "hiralpate@gmail.com",
+      "phoneNo": "7896541230",
+      "dateOfBirth": "2018-01-31T18:30:00.000Z",
+      "gender": "1",
+      "bloodGroup": "O+",
+      "branch": "Science",
+      "pinCode": "396191",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Vapi",
+      "address": "A 106 shree Shankar Appt",
+      "subjects": [
+        "Maths",
+        "Hindi",
+        "Gujarati",
+        "SS",
+        "Science"
+      ],
+      "id": 6
     },
     {
       "fullName": "Ankit Patel",
@@ -180,13 +250,14 @@
       "pinCode": "396191",
       "country": "India",
       "state": "Gujarat",
-      "city": "Chhiri",
+      "city": "Balitha",
       "address": "A 106 Shree Shankar Appt.",
       "subjects": [
         "Maths",
+        "Maths",
         "SS"
       ],
-      "id": 3
+      "id": 7
     }
   ]
 }

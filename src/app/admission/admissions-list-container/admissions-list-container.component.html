@@ -1,1 +1,2 @@
-<p>admissions-list-container works!</p>
+<app-admission-list-presentation [admissionsList]="admissionList$ | async" (editedData)="updateAdmission($event)"
+    (removeData)="onDelete($event)"></app-admission-list-presentation>

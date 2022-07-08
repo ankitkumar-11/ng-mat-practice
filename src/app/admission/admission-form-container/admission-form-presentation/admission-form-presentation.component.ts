@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
+//----------------------------------------------------------------------
 import { AdmissionDetail } from '../../model/admission-details.model';
 import { PostalDetail } from '../../model/postal-details.model';
+//----------------------------------------------------------------------
 import { AdmissionFormPresenterService } from '../admission-form-presenter/admission-form-presenter.service';
 
 @Component({
@@ -11,6 +13,25 @@ import { AdmissionFormPresenterService } from '../admission-form-presenter/admis
   viewProviders: [AdmissionFormPresenterService]
 })
 export class AdmissionFormPresentationComponent implements OnInit {
+
+  /**
+   * Setter method of edit Data
+   */
+  @Input() public set editData(v: AdmissionDetail) {
+    if (v) {
+      this._editData = v;
+      this.isEditMode = true;
+      this.admissionForm.patchValue(this._editData);
+      this.pinCode.emit(this.editData.pinCode);
+      this.subjects.clear()
+      this._editData.subjects.forEach(el => {
+        this.subjects.push(this._presenter.subjectField(el));
+      })
+    }
+  }
+  public get editData(): AdmissionDetail {
+    return this._editData;
+  }
 
   /**
    * Setter method of Postal Deatails (citys:string[], state, country)
@@ -30,16 +51,26 @@ export class AdmissionFormPresentationComponent implements OnInit {
   @Output() onSubmit: EventEmitter<AdmissionDetail>
 
   public admissionForm!: FormGroup;
+  public isEditMode: boolean;
+  public todaysDate: Date;
+  public maxDate: Date;
 
   private _postalDetails!: PostalDetail;
 
+  private _editData!: AdmissionDetail;
+
   constructor(private _presenter: AdmissionFormPresenterService) {
+    this.admissionForm = this._presenter.admissionForm();
     this.pinCode = new EventEmitter<number>();
     this.onSubmit = new EventEmitter<AdmissionDetail>();
+    this._postalDetails = { citys: [], country: '', state: '' };
+    this.isEditMode = false;
+    this.todaysDate = new Date();
+    this.maxDate = new Date();
+    this.maxDate.setUTCFullYear(this.todaysDate.getFullYear() - 5)
   }
 
   ngOnInit(): void {
-    this.admissionForm = this._presenter.admissionForm();
   }
 
   /**
@@ -63,7 +94,9 @@ export class AdmissionFormPresentationComponent implements OnInit {
    * @description emit pin code to container if valid 
    */
   public onPinCodeChange(): void {
+    this.resetPostalDetail();
     if (this.admissionForm.get('pinCode')?.valid) {
+      debugger
       this.pinCode.emit(parseInt(this.admissionForm.get('pinCode')?.value))
     }
   }
@@ -95,12 +128,30 @@ export class AdmissionFormPresentationComponent implements OnInit {
   public openView() {
     this.admissionForm.valid ? this._presenter.openView(this.admissionForm.getRawValue()).subscribe({
       next: (data) => {
-        this.onSubmit.emit(data)
+        this.onSubmit.emit(data);
       },
       error: (e) => {
         console.log(e);
       }
     }) : this.admissionForm.markAllAsTouched();
+  }
+
+  /**
+  * @name resetForm
+  * @description reset the form group
+  */
+  public resetForm() {
+    this.admissionForm.reset();
+  }
+
+  /**
+   * @name resetPostalDetail
+   * @description Reset the postal detail object
+   */
+  private resetPostalDetail() {
+    this._postalDetails.citys = [];
+    this._postalDetails.country = '';
+    this.postalDetails.state = '';
   }
 
 }

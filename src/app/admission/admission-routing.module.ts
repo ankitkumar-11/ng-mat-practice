@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdmissionFormContainerComponent } from './admission-form-container/admission-form-container.component';
+import { AdmissionsListContainerComponent } from './admissions-list-container/admissions-list-container.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'form'
+    redirectTo: 'admissionForm',
   },
   {
-    path: 'form',
-    component: AdmissionFormContainerComponent
+    path: 'admissionForm',
+    component: AdmissionFormContainerComponent,
+  },
+  {
+    path: 'admissionList',
+    component: AdmissionsListContainerComponent,
   }
 ];
 

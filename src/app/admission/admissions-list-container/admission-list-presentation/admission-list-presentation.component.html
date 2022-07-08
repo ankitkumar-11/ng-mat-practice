@@ -1,0 +1,82 @@
+<div class="d-flex align-items-center mb-3">
+    <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search</mat-label>
+        <input type="text" matInput (keyup)="applyFilter($event)">
+    </mat-form-field>
+</div>
+
+<div class="mat-elevation-z2">
+    <table mat-table [dataSource]="dataSource" matSort class="w-100">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let i = index"> {{i+1}} </td>
+        </ng-container>
+
+        <!-- Full Name Column -->
+        <ng-container matColumnDef="fullname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header="firstName"> Fullname </th>
+            <td mat-cell *matCellDef="let element"> {{element.fullName | titlecase}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phoneNo">
+            <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNo}} </td>
+        </ng-container>
+
+        <!-- date of birth Column -->
+        <ng-container matColumnDef="dateOfBirth">
+            <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date: 'dd/MM/YY'}} </td>
+        </ng-container>
+
+        <!-- gender Column -->
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef> Gender </th>
+            <td mat-cell *matCellDef="let element"> {{GENDER[element.gender]}} </td>
+        </ng-container>
+
+        <!-- branch Column -->
+        <ng-container matColumnDef="branch">
+            <th mat-header-cell *matHeaderCellDef> Branch </th>
+            <td mat-cell *matCellDef="let element"> {{element.branch}} </td>
+        </ng-container>
+
+        <!-- city Column -->
+        <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef> City </th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="openView(element)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+                <button class="ms-3" mat-icon-button color="primary" (click)="edit(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button class="ms-3" mat-icon-button color="accent" (click)="onDelete(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[3, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+
+</div>

@@ -1,4 +1,5 @@
 export class AdmissionDetail {
+    public id?: string;
     public fullName: string;
     public email: string;
     public phoneNo: number;
@@ -25,7 +26,8 @@ export class AdmissionDetail {
         city: string,
         address: string,
         branch: string,
-        subjects: string[]) {
+        subjects: string[],
+        id?: string) {
 
         this.fullName = fullName;
         this.email = email;
@@ -40,6 +42,6 @@ export class AdmissionDetail {
         this.address = address;
         this.branch = branch;
         this.subjects = subjects;
-
+        this.id = id;
     }
 }

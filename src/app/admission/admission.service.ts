@@ -27,6 +27,15 @@ export class AdmissionService {
       map(res => res[0].PostOffice),
     )
   }
+  
+  /**
+   * @name getAllAdmissions
+   * @description get all admission data from db
+   * @returns Observable<AdmissionDetail>
+   */
+  public getAllAdmissions(): Observable<AdmissionDetail[]> {
+    return this._http.get<AdmissionDetail[]>(`${this.apiBaseLink}admission`)
+  }
 
   /**
    * @name addNewAdmission
@@ -36,6 +45,27 @@ export class AdmissionService {
    */
   public addNewAdmission(data: AdmissionDetail): Observable<AdmissionDetail> {
     return this._http.post<AdmissionDetail>(`${this.apiBaseLink}admission`, data)
+  }
+
+  /**
+   * @name addNewAdmission
+   * @description Update admission data to db
+   * @param data : AdmissionDetail
+   * @param id : string
+   * @returns Observable<AdmissionDetail>
+   */
+  public updateAdmission(data: AdmissionDetail, id: string): Observable<AdmissionDetail> {
+    return this._http.put<AdmissionDetail>(`${this.apiBaseLink}admission/${id}`, data)
+  }
+
+
+  /**
+   * @name removeAdmissions
+   * @description remove admission data from db by id
+   * @returns Observable<AdmissionDetail>
+   */
+   public removeAdmissions(id:string): Observable<AdmissionDetail> {
+    return this._http.delete<AdmissionDetail>(`${this.apiBaseLink}admission/${id}`)
   }
 
 }

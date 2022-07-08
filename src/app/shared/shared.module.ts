@@ -9,6 +9,7 @@ import { MaterialModule } from '../material/material.module';
 import { OnlyAlphabetsDirective } from './directives/only-alphabets.directive';
 import { ToUpperCaseDirective } from './directives/to-upper-case.directive';
 import { OnlyNumbersDirective } from './directives/only-numbers.directive';
+import { PreventkeyPressDirective } from './directives/preventkey-press.directive';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { OnlyNumbersDirective } from './directives/only-numbers.directive';
     OnlyAlphabetsDirective,
     ToUpperCaseDirective,
     OnlyNumbersDirective,
+    PreventkeyPressDirective,
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { OnlyNumbersDirective } from './directives/only-numbers.directive';
     ToUpperCaseDirective,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    PreventkeyPressDirective
   ]
 })
 export class SharedModule { }

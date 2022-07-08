@@ -15,6 +15,6 @@
     <p>Subjects :- {{data.subjects.join(', ')}}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-raised-button color="primary" [mat-dialog-close]="true">Submit</button>
+    <button *ngIf="viewType === 'form'" mat-raised-button color="primary" [mat-dialog-close]="true">Submit</button>
     <button mat-raised-button class="ms-3" color="warn" [mat-dialog-close]="false">Cancel</button>
 </mat-dialog-actions>

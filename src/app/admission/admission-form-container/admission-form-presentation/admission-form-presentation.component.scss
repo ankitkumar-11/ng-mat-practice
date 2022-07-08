@@ -5,12 +5,18 @@
     }
 }
 
-.subject-control{
-    ::ng-deep.mat-form-field-wrapper{
+.subject-control {
+    ::ng-deep.mat-form-field-wrapper {
         padding-bottom: 0;
     }
 
-    ::ng-deep.mat-form-field-infix{
+    ::ng-deep.mat-form-field-infix {
         border-top: 0.4em solid transparent;
     }
+}
+
+.dialog-content {
+    max-height: 65vh;
+    overflow-x: hidden;
+    overflow-y: auto;
 }

@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 //------------------------------------------------------------------------------------
-import { MatDialog } from '@angular/material/dialog';
-//------------------------------------------------------------------------------------
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 //------------------------------------------------------------------------------------
 import { BLOOD_GROUP_REGEX, EMAIL_REGEX, ONLY_ALPHABETS_REGEX, PHONE_NO_REGEX, PINCODE_REGEX } from 'src/app/shared/constants/constants';
 //------------------------------------------------------------------------------------
-import { AdmissionDetailViewComponent } from '../../admission-detail-view/admission-detail-view.component';
+import { AdmissionUtilitiesService } from '../../admission-utilities.service';
 //------------------------------------------------------------------------------------
 import { AdmissionDetail } from '../../model/admission-details.model';
 
@@ -18,7 +16,7 @@ export class AdmissionFormPresenterService {
   private onSubmit: Subject<AdmissionDetail>;
   private onSubmit$: Observable<AdmissionDetail>
 
-  constructor(private _fb: FormBuilder, private _dialog: MatDialog) {
+  constructor(private _fb: FormBuilder, private _admissionUtilities: AdmissionUtilitiesService) {
     this.onSubmit = new Subject<AdmissionDetail>();
     this.onSubmit$ = this.onSubmit.asObservable();
   }
@@ -38,8 +36,8 @@ export class AdmissionFormPresenterService {
       bloodGroup: [null, [Validators.required, Validators.pattern(BLOOD_GROUP_REGEX)]],
       branch: [null, [Validators.required, Validators.maxLength(10)]],
       pinCode: [null, [Validators.required, Validators.pattern(PINCODE_REGEX)]],
-      country: [null, [Validators.required]],
-      state: [null, [Validators.required]],
+      country: [{ value: null, disabled: true }, [Validators.required]],
+      state: [{ value: null, disabled: true }, [Validators.required]],
       city: [null, [Validators.required]],
       address: [null, [Validators.required, Validators.maxLength(200)]],
       subjects: this._fb.array([this.subjectField()], [Validators.maxLength(5), Validators.required])
@@ -63,11 +61,7 @@ export class AdmissionFormPresenterService {
    * @return Observable<AdmissionDetail>
    */
   public openView(data: AdmissionDetail): Observable<AdmissionDetail> {
-    const admissionViewRef = this._dialog.open(AdmissionDetailViewComponent, {
-      width: '60%',
-      data: data
-    })
-    admissionViewRef.afterClosed().subscribe((res: boolean) => {
+    this._admissionUtilities.openAdmissionDetailView(data, 'form').afterClosed().subscribe((res: boolean) => {
       if (res) {
         this.onSubmit.next(data)
       }
